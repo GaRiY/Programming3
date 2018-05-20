@@ -18,14 +18,6 @@ function main() {
     }
     del.onclick = Deleting;
 
-	function click(evt) {
-		var cons = [];
-		console.log(evt.pageX, evt.pageY);
-		cons.push(evt.pageX, evt.pageY);
-		socket.emit("draw", cons);
-	}
-	window.onclick = click;
-
     function handleMessage(msg) {
         var p = document.createElement('p');
         p.innerText = msg;
@@ -34,11 +26,15 @@ function main() {
     }
 
     function deleteTags(){
-        var lis = chatDiv.getElementsByTagName("P");
+        
+        var lis = chatDiv.getElementsByTagName("p");
+        console.log(lis);
         for (var i in lis){
-            i = "";
+            lis[0].remove();
 
-
+            if(lis.length == 0){
+                break;
+            }
         }
 
     }
